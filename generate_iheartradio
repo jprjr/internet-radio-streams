@@ -27,6 +27,22 @@ my ( $help, $man );
 my $iheart_xml_url =
   'http://www.iheartradio.com/cc-common/iphone/station_list.xml';
 
+my $pls_template = <<'PLS_END';
+[playlist]
+NumberOfEntries=1
+
+File1=%s
+Title1=%s
+Length1=-1
+PLS_END
+
+my $m3u_template = <<'M3U_END';
+#EXTM3U
+#EXTINF:-1,%s
+%s
+M3U_END
+
+
 GetOptions(
     'help!'        => \$help,
     'man!'         => \$man,
@@ -85,11 +101,18 @@ sub format_pls {
     my $station = shift;
 
     if ($type eq "pls") {
-        return "[playlist]\nNumberOfEntries=1\n\nFile1=".
-              $station->{'stream_url_v2'}."\n";
+        return sprintf($pls_template,
+                       $station->{'stream_url_v2'},
+                       $station->{'name'}.' '.
+                       $station->{'description'}
+                      );
     }
     elsif ($type eq "m3u") {
-        return $station->{'stream_url_v2'}."\n";
+        return sprintf($m3u_template,
+                       $station->{'name'}.' '.
+                       $station->{'description'},
+                       $station->{'stream_url_v2'}
+                       );
     }
 }
 
