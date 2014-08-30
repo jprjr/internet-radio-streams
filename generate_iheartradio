@@ -1,0 +1,126 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use version; our $VERSION = qv('1.0.0');
+
+use utf8;
+use open qw(:std :utf8);
+use Carp;
+use Cwd qw(abs_path getcwd);
+use English qw(-no_match_vars);
+use File::Basename;
+use File::Spec;
+use File::Path qw(make_path);
+use Getopt::Long;
+use Pod::Usage;
+
+use LWP::Simple;
+use XML::Twig;
+
+my ( $script_name, $script_folder ) = fileparse( abs_path($PROGRAM_NAME) );
+my $current_folder = getcwd();
+
+my ( $help, $man );
+
+my $iheart_xml_url =
+  'http://www.iheartradio.com/cc-common/iphone/station_list.xml';
+
+GetOptions(
+    'help!'        => \$help,
+    'man!'         => \$man,
+) or pod2usage( -verbose => 1, -exit => 1 );
+
+# add other options to check for here
+if( defined $help ) {
+    pod2usage( -verbose => 1, -exit => 0 );
+}
+if( defined $man ) {
+    pod2usage( -verbose => 2, -exit => 0 );
+}
+
+my $iheart_xml = get($iheart_xml_url);
+
+if (not defined $iheart_xml) {
+    croak $OS_ERROR;
+}
+
+my $iheart_data = XML::Twig->new()->parse($iheart_xml);
+
+make_path('m3u/iheartradio/by-name','m3u/iheartradio/by-callletters',
+          'pls/iheartradio/by-name','pls/iheartradio/by-callletters');
+
+foreach my $iheart_station ($iheart_data->get_xpath('/station_list/station')) {
+    my $station = {};
+    foreach my $field (qw[
+                        name
+                        description
+                        stream_url_v2
+                        callletters
+                        ]) {
+        $station->{$field} = $iheart_station->first_child_trimmed_text($field);
+    }
+    make_pls($station);
+}
+
+sub make_pls {
+    my $station = shift;
+    foreach my $type (qw [m3u pls]) {
+        foreach my $id (qw[ name callletters ]) {
+            my $path = sprintf('%s/iheartradio/by-%s',
+                               $type,
+                               $id);
+            my $file = sanitize_filename($station->{$id}.'.'.$type);
+            open (my $pls_fh, ">", $path.'/'.$file) or warn "Unable to open $file";
+            print $pls_fh format_pls($type,$station);
+            close($pls_fh);
+        }
+    }
+}
+
+
+sub format_pls {
+    my $type = shift;
+    my $station = shift;
+
+    if ($type eq "pls") {
+        return "[playlist]\nNumberOfEntries=1\n\nFile1=".
+              $station->{'stream_url_v2'}."\n";
+    }
+    elsif ($type eq "m3u") {
+        return $station->{'stream_url_v2'}."\n";
+    }
+}
+
+sub sanitize_filename {
+    my $filename = shift;
+    $filename =~ s/\\|\/|:|\*|\?|"|<|>|\|/_/g;
+    return $filename;
+}
+
+
+exit 0;
+__END__
+=head1 NAME
+
+ pl
+
+=head1 DESCRIPTION
+
+ This is some placeholder text for my actual description.
+
+=head1 USAGE
+
+ pl Arguments options etc
+
+=head1 ARGUMENTS
+
+ --help  Print this help text
+
+=head1 OPTIONS
+
+ This is some placeholder text for options
+
+=cut
+# vim:fdm=marker:syntax=perl:cc=80:fenc=utf-8

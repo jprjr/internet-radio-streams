@@ -1,0 +1,4 @@
+[playlist]
+NumberOfEntries=1
+
+File1=http://wkxj-fm.akacast.akamaistream.net/7/302/52421/v1/auth.akacast.akamaistream.net/wkxj-fm
