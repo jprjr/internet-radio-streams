@@ -9,6 +9,7 @@ mkdir -p "${m3u_dir}"
 
 declare -A stations=(
   ["The Current"]="http://current.stream.publicradio.org/kcmp.mp3"
+  ["The Spy FM"]="http://50.7.70.58:8691/live"
 )
 
 for station in "${!stations[@]}"; do
