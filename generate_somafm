@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+playlists_root_dir="."
+pls_dir="${playlists_root_dir}/pls/somafm"
+m3u_dir="${playlists_root_dir}/m3u/somafm"
+
+mkdir -p "${pls_dir}"
+mkdir -p "${m3u_dir}"
+
+declare -A stations=(
+  ["indiepop"]="Indie Pop Rocks"
+  ["folkfwd"]="Folk Forward"
+  ["bagel"]="BAGeL Radio"
+  ["digitalis"]="Digitalis"
+  ["7soul"]="Seven Inch Soul"
+  ["groovesalad"]="Groove Salad"
+  ["lush"]="Lush"
+  ["spacestation"]="Space Station Soma"
+  ["sonicuniverse"]="Sonic Universe"
+  ["secretagent"]="Secret Agent"
+  ["suburbsofgoa"]="Suburbs of Goa"
+  ["earwaves"]="Earwaves"
+  ["defcon"]="DEF CON Radio"
+  ["thetrip"]="The Trip"
+  ["cliqhop"]="cliqhop idm"
+  ["dubstep"]="Dub Step Beyond"
+  ["missioncontrol"]="Mission Control"
+  ["bootliqour"]="Boot Liqour"
+  ["covers"]="Covers"
+  ["u80s"]="Underground 80s"
+  ["beatblender"]="Beat Blender"
+  ["doomed"]="Doomed"
+  ["brfm"]="Black Rock FM"
+  ["sf1033"]="SF 10-33"
+  ["illstreet"]="Illinois Street Lounge"
+  ["deepspaceone"]="Deep Space One"
+  ["dronezone"]="Drone Zone"
+  ["poptron"]="PopTron"
+  ["airwaves"]="Iceland Airwaves"
+  ["sxfm"]="South by Soma"
+)
+
+for station in "${!stations[@]}"; do
+  echo "Downloading ${stations["$station"]}"
+  pls_url="http://somafm.com/$station.pls"
+  m3u_url="http://somafm.com/m3u/$station.m3u"
+
+  pls_file="${pls_dir}/${stations["$station"]}.pls"
+  m3u_file="${m3u_dir}/${stations["$station"]}.m3u"
+
+  wget -O "${pls_file}" "${pls_url}"
+  wget -O "${m3u_file}" "${m3u_url}"
+done
