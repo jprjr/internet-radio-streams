@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+playlists_root_dir="."
+pls_dir="${playlists_root_dir}/pls/independent"
+m3u_dir="${playlists_root_dir}/m3u/independent"
+
+mkdir -p "${pls_dir}"
+mkdir -p "${m3u_dir}"
+
+declare -A stations=(
+  ["The Current"]="http://current.stream.publicradio.org/kcmp.mp3"
+)
+
+for station in "${!stations[@]}"; do
+  echo "Generating $station playlist"
+  #pls_url="http://somafm.com/$station.pls"
+  #m3u_url="http://somafm.com/m3u/$station.m3u"
+
+  pls_file="${pls_dir}/$station.pls"
+  m3u_file="${m3u_dir}/$station.m3u"
+
+  echo "#EXTM3U" > "${m3u_file}"
+  echo "#EXTINF:-1,$station" >> "${m3u_file}"
+  echo "${stations["$station"]}" >> "${m3u_file}"
+
+  echo "[playlist]" > "${pls_file}"
+  echo "NumberOfEntries=1" >> "${pls_file}"
+  echo "" >> "${pls_file}"
+  echo "File1=${stations["$station"]}" >> "${pls_file}"
+  echo "Title1=$station" >> "${pls_file}"
+  echo "Length1=-1" >> "${pls_file}"
+
+done
