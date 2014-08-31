@@ -1,4 +1,4 @@
-# internat-radio-stations
+# internet-radio-streams
 
 My goal is to make a cool github with a listing of internet radio station streams.
 
@@ -8,7 +8,7 @@ I don't have a lot of preferences for how to list streams, but here's what
 I do care about:
 
 * Please make an m3u and a pls for each stream.
-* Please try to find some logic way to group your stations - for
+* Please try to find some logical way to group your stations - for
   instance, I've made an 'iheartradio' directory.
 * If you write a script or anything to make your playlists, please
   include that, too.
