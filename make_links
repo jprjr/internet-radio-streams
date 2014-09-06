@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+if [[ -z "$1" || -z "$2" ]]; then
+  echo "usage:"
+  echo "  $0 folder format [iheartradio format]"
+  echo "Creates symlinks to playlists"
+  echo "Format can be 'm3u' or 'pls'"
+  echo "iheartradio format can be 'by-name' or 'by-calletters'"
+  echo "Defaults to 'by-name'"
+fi
+
+cwd=$(pwd)
+dest=$1
+format=$2
+iheartradio_format='by-name'
+
+if [[ -n "$3" ]]; then
+  iheartradio_format=$3
+fi
+
+
+abspath_portable() {
+  [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
+abs_path=$(abspath_portable "$0")
+
+script_dir=$(dirname "${abs_path}")
+script_abs_path=$(readlink "${abs_path}" || echo "${abs_path}")
+script_abs_dir=$(cd "$(dirname "${script_abs_path}")" && pwd -P)
+script_name="${abs_path#$script_abs_dir/}"
+script_abs_name="${script_abs_path#$script_abs_dir/}"
+
+cd $dest
+
+find "$script_abs_dir/$format"\
+  -type f\
+  -not -path '*/iheartradio/*'\
+  -exec sh -c \
+  'src="{}"; dest="${src#'"$script_abs_dir/$format/"'}"; leadfolder=$(dirname "$dest"); mkdir -p "$leadfolder"; ln -sfv "$src" "$dest" ' \;
+
+find "$script_abs_dir/$format" \
+  -type f \
+  -path '*/iheartradio/'$iheartradio_format'/*' \
+  -exec sh -c \
+  'src="{}"; dest="${src#'"$script_abs_dir/$format/"'}"; leadfolder=$(dirname "$dest"); mkdir -p "$leadfolder"; ln -sfv "$src" "$dest" ' \;
