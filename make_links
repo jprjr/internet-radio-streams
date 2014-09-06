@@ -7,6 +7,7 @@ if [[ -z "$1" || -z "$2" ]]; then
   echo "Format can be 'm3u' or 'pls'"
   echo "iheartradio format can be 'by-name' or 'by-calletters'"
   echo "Defaults to 'by-name'"
+  exit 1
 fi
 
 cwd=$(pwd)
