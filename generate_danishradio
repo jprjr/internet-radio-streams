@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+playlists_root_dir="."
+pls_dir="${playlists_root_dir}/pls/danishradio"
+m3u_dir="${playlists_root_dir}/m3u/danishradio"
+
+mkdir -p "${pls_dir}"
+mkdir -p "${m3u_dir}"
+
+declare -A stations=(
+  ["DR Mama"]="http://live-icy.gss.dr.dk:8000/A/A18H.mp3"
+  ["DR Nyheder"]="http://live-icy.gss.dr.dk:8000/A/A02H.mp3"
+  ["DR P1"]="http://live-icy.gss.dr.dk:8000/A/A03H.mp3"
+  ["DR P2 Klassisk"]="http://live-icy.gss.dr.dk:8000/A/A04H.mp3"
+  ["DR P3"]="http://live-icy.gss.dr.dk:8000/A/A05H.mp3"
+  ["DR P4 Bornholm"]="http://live-icy.gss.dr.dk:8000/A/A06H.mp3"
+  ["DR P4 Esbjerg"]="http://live-icy.gss.dr.dk:8000/A/A15H.mp3"
+  ["DR P4 Fyn"]="http://live-icy.gss.dr.dk:8000/A/A07H.mp3"
+  ["DR P4 København"]="http://live-icy.gss.dr.dk:8000/A/A08H.mp3"
+  ["DR P4 Midt & Vest"]="http://live-icy.gss.dr.dk:8000/A/A09H.mp3"
+  ["DR P4 Nordjylland"]="http://live-icy.gss.dr.dk:8000/A/A10H.mp3"
+  ["DR P4 Sjælland"]="http://live-icy.gss.dr.dk:8000/A/A11H.mp3"
+  ["DR P4 Syd"]="http://live-icy.gss.dr.dk:8000/A/A12H.mp3"
+  ["DR P4 Trekanten"]="http://live-icy.gss.dr.dk:8000/A/A13H.mp3"
+  ["DR P4 Østjylland"]="http://live-icy.gss.dr.dk:8000/A/A14H.mp"
+  ["DR P5"]="http://live-icy.gss.dr.dk:8000/A/A25H.mp3"
+  ["DR P6 Beat"]="http://live-icy.gss.dr.dk:8000/A/A29H.mp3"
+  ["DR P7 Mix"]="http://live-icy.gss.dr.dk:8000/A/A21H.mp3"
+  ["DR P8 Jazz"]="http://live-icy.gss.dr.dk:8000/A/A22H.mp3"
+  ["DR Ramasjang/Ultra"]="http://live-icy.gss.dr.dk:8000/A/A24H.mp3"
+  ["Klassisk Live"]="http://onair.100fmlive.dk:80/klassisk_live.mp3"
+  ["Nova FM"]="http://stream.novafm.dk:80/nova128"
+  ["Pop FM"]="http://stream.popfm.dk:80/pop128"
+  ["Radio 100 FM"]="http://onair.100fmlive.dk:80/100fm_live.mp3"
+  ["Radio Charlie"]="http://89.184.153.12:8000/radiocharlie.mp3"
+  ["The Voice"]="http://195.184.101.203/voice128"
+)
+
+for station in "${!stations[@]}"; do
+  echo "Generating $station playlist"
+  #pls_url="http://somafm.com/$station.pls"
+  #m3u_url="http://somafm.com/m3u/$station.m3u"
+
+  pls_file="${pls_dir}/$station.pls"
+  m3u_file="${m3u_dir}/$station.m3u"
+
+  echo "#EXTM3U" > "${m3u_file}"
+  echo "#EXTINF:-1,$station" >> "${m3u_file}"
+  echo "${stations["$station"]}" >> "${m3u_file}"
+
+  echo "[playlist]" > "${pls_file}"
+  echo "NumberOfEntries=1" >> "${pls_file}"
+  echo "" >> "${pls_file}"
+  echo "File1=${stations["$station"]}" >> "${pls_file}"
+  echo "Title1=$station" >> "${pls_file}"
+  echo "Length1=-1" >> "${pls_file}"
+
+done
