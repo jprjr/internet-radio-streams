@@ -21,3 +21,4 @@ My initial commit is a listing of all the iHeartRadio stations - take a look at
 * `iheartradio` - a listing of all iHeartRadio stations. Contains subdirectories for grouping by callletters and by station name.
 * `somafm` - a listing of all the SomaFM stations.
 * `independent` - a listing of independent stations
+* `digitallyimported` - Digitally imported playlists
