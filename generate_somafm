@@ -14,6 +14,7 @@ declare -A stations=(
   ["digitalis"]="Digitalis"
   ["7soul"]="Seven Inch Soul"
   ["groovesalad"]="Groove Salad"
+  ["gsclassic"]="Groove Salad Classic"
   ["lush"]="Lush"
   ["spacestation"]="Space Station Soma"
   ["sonicuniverse"]="Sonic Universe"
@@ -25,7 +26,7 @@ declare -A stations=(
   ["cliqhop"]="cliqhop idm"
   ["dubstep"]="Dub Step Beyond"
   ["missioncontrol"]="Mission Control"
-  ["bootliqour"]="Boot Liqour"
+  ["bootliquor"]="Boot Liquor"
   ["covers"]="Covers"
   ["u80s"]="Underground 80s"
   ["beatblender"]="Beat Blender"
@@ -38,6 +39,10 @@ declare -A stations=(
   ["poptron"]="PopTron"
   ["airwaves"]="Iceland Airwaves"
   ["sxfm"]="South by Soma"
+  ["seventies"]="Left Coast 70s"
+  ["thistle"]="ThistleRadio"
+  ["fluid"]="Fluid"
+  ["metal"]="Metal Detector"
 )
 
 for station in "${!stations[@]}"; do
