@@ -49,6 +49,7 @@ declare -A stations=(
   ["thistle"]="ThistleRadio"
   ["fluid"]="Fluid"
   ["metal"]="Metal Detector"
+  ["reggae"]="New Reggae Channel"
 
   # A seasonal channel. For Halloween 2019, was a station named "doomed"
   ["specials"]="Specials"
