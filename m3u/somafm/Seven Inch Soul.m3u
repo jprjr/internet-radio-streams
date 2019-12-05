@@ -1,2 +1,9 @@
-icy://uwstream2.somafm.com:7770
-icy://uwstream3.somafm.com:7770
+#EXTM3U
+#EXTINF:-1,SomaFM - Seven Inch Soul
+http://ice4.somafm.com/7soul-128-aac
+#EXTINF:-1,SomaFM - Seven Inch Soul
+http://ice2.somafm.com/7soul-128-aac
+#EXTINF:-1,SomaFM - Seven Inch Soul
+http://ice1.somafm.com/7soul-128-aac
+
+

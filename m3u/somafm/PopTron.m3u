@@ -1,2 +1,9 @@
-icy://xstream1.somafm.com:2200
-icy://uwstream3.somafm.com:2200
+#EXTM3U
+#EXTINF:-1,SomaFM - PopTron
+http://ice4.somafm.com/poptron-128-aac
+#EXTINF:-1,SomaFM - PopTron
+http://ice2.somafm.com/poptron-128-aac
+#EXTINF:-1,SomaFM - PopTron
+http://ice1.somafm.com/poptron-128-aac
+
+

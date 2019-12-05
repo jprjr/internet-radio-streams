@@ -1,2 +1,9 @@
-icy://xstream1.somafm.com:2800
-icy://uwstream3.somafm.com:2800
+#EXTM3U
+#EXTINF:-1,SomaFM - Deep Space One
+http://ice4.somafm.com/deepspaceone-128-aac
+#EXTINF:-1,SomaFM - Deep Space One
+http://ice2.somafm.com/deepspaceone-128-aac
+#EXTINF:-1,SomaFM - Deep Space One
+http://ice1.somafm.com/deepspaceone-128-aac
+
+

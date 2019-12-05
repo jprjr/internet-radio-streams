@@ -1,2 +1,9 @@
-icy://xstream1.somafm.com:8388
-icy://uwstream3.somafm.com:8388
+#EXTM3U
+#EXTINF:-1,SomaFM - Beat Blender
+http://ice4.somafm.com/beatblender-128-aac
+#EXTINF:-1,SomaFM - Beat Blender
+http://ice2.somafm.com/beatblender-128-aac
+#EXTINF:-1,SomaFM - Beat Blender
+http://ice1.somafm.com/beatblender-128-aac
+
+

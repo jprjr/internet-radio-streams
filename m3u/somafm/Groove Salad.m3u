@@ -1,3 +1,9 @@
-icy://uwstream1.somafm.com:80
-icy://xstream1.somafm.com:8032
-icy://uwstream2.somafm.com:8032
+#EXTM3U
+#EXTINF:-1,SomaFM - Groove Salad
+http://ice4.somafm.com/groovesalad-128-aac
+#EXTINF:-1,SomaFM - Groove Salad
+http://ice2.somafm.com/groovesalad-128-aac
+#EXTINF:-1,SomaFM - Groove Salad
+http://ice1.somafm.com/groovesalad-128-aac
+
+

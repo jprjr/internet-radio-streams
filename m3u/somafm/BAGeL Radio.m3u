@@ -1,3 +1,9 @@
-icy://xstream1.somafm.com:9090
-icy://uwstream3.somafm.com:9090
-icy://uwstream2.somafm.com:8080
+#EXTM3U
+#EXTINF:-1,SomaFM - BAGeL Radio
+http://ice4.somafm.com/bagel-128-aac
+#EXTINF:-1,SomaFM - BAGeL Radio
+http://ice2.somafm.com/bagel-128-aac
+#EXTINF:-1,SomaFM - BAGeL Radio
+http://ice1.somafm.com/bagel-128-aac
+
+
