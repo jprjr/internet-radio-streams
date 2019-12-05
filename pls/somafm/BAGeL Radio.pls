@@ -1,15 +1,13 @@
 [playlist]
-numberofentries=4
-File1=http://xstream1.somafm.com:9090
-Title1=SomaFM: BAGeL Radio (#1 128 mp3): What alternative rock radio should sound like.
+numberofentries=3
+File1=http://ice4.somafm.com/bagel-128-aac
+Title1=SomaFM: BAGeL Radio (#1): What alternative rock radio should sound like. [explicit]
 Length1=-1
-File2=http://uwstream3.somafm.com:9090
-Title2=SomaFM: BAGeL Radio (#2 128 mp3): What alternative rock radio should sound like.
+File2=http://ice2.somafm.com/bagel-128-aac
+Title2=SomaFM: BAGeL Radio (#2): What alternative rock radio should sound like. [explicit]
 Length2=-1
-File3=http://uwstream2.somafm.com:8080
-Title3=SomaFM: BAGeL Radio (#3 128 mp3): What alternative rock radio should sound like.
+File3=http://ice1.somafm.com/bagel-128-aac
+Title3=SomaFM: BAGeL Radio (#3): What alternative rock radio should sound like. [explicit]
 Length3=-1
-File4=http://ice.somafm.com/bagel
-Title4=SomaFM: BAGeL Radio (Firewall-friendly 128 mp3) What alternative rock radio should sound like.
-Length4=-1
 Version=2
+

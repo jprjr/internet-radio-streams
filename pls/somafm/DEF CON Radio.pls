@@ -1,12 +1,13 @@
 [playlist]
 numberofentries=3
-File1=http://xstream1.somafm.com:6200
-Title1=SomaFM: DEF CON Radio (#1 128k mp3): Music for Hacking. From DEF CON 22 in Las Vegas.
+File1=http://ice4.somafm.com/defcon-128-aac
+Title1=SomaFM: DEF CON Radio (#1): Music for Hacking. The DEF CON Year-Round Channel.
 Length1=-1
-File2=http://uwstream3.somafm.com:6200
-Title2=SomaFM: DEF CON Radio (#2 128k mp3): Music for Hacking. From DEF CON 22 in Las Vegas.
+File2=http://ice2.somafm.com/defcon-128-aac
+Title2=SomaFM: DEF CON Radio (#2): Music for Hacking. The DEF CON Year-Round Channel.
 Length2=-1
-File3=http://ice.somafm.com/defcon
-Title3=SomaFM: DEF CON Radio (Firewall-friendly 128k mp3) Music for Hacking. From DEF CON 22 in Las Vegas.
+File3=http://ice1.somafm.com/defcon-128-aac
+Title3=SomaFM: DEF CON Radio (#3): Music for Hacking. The DEF CON Year-Round Channel.
 Length3=-1
 Version=2
+

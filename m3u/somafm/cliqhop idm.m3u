@@ -1,3 +1,9 @@
-icy://xstream1.somafm.com:8062
-icy://uwstream2.somafm.com:2668
-icy://uwstream3.somafm.com:8062
+#EXTM3U
+#EXTINF:-1,SomaFM - cliqhop idm
+http://ice4.somafm.com/cliqhop-128-aac
+#EXTINF:-1,SomaFM - cliqhop idm
+http://ice2.somafm.com/cliqhop-128-aac
+#EXTINF:-1,SomaFM - cliqhop idm
+http://ice1.somafm.com/cliqhop-128-aac
+
+
